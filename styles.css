@@ -1,0 +1,621 @@
+/* Reset and base styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg-gradient);
+  min-height: 100vh;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: var(--text-color);
+  line-height: 1.6;
+  transition: background 0.5s, color 0.3s;
+}
+
+/* Remove overlay for readability since gradient is used */
+body::before {
+  display: none;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* CSS Variables for light and dark mode */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #333333;
+  --primary-color: #007bff;
+  --secondary-color: #0056b3;
+  --accent-color: #f39c12;
+  --header-bg: #f8f9fa;
+  --footer-bg: #222222;
+  --footer-text: #cccccc;
+  --btn-bg: var(--primary-color);
+  --btn-hover-bg: var(--secondary-color);
+  --input-bg: #f0f0f0;
+  --input-border: #cccccc;
+  --accordion-bg: #f9f9f9;
+  --accordion-border: #ddd;
+  --bg-gradient: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+  --bg-gradient-dark: linear-gradient(135deg, #232526 0%, #414345 100%);
+}
+
+body.dark-mode {
+  --bg-color: #121212;
+  --text-color: #e0e0e0;
+  --primary-color: #3399ff;
+  --secondary-color: #2672d2;
+  --accent-color: #f39c12;
+  --header-bg: #1e1e1e;
+  --footer-bg: #111111;
+  --footer-text: #888888;
+  --btn-bg: var(--primary-color);
+  --btn-hover-bg: var(--secondary-color);
+  --input-bg: #222222;
+  --input-border: #444444;
+  --accordion-bg: #1e1e1e;
+  --accordion-border: #444;
+  --bg-gradient: var(--bg-gradient-dark);
+}
+
+/* HEADER & NAVIGATION */
+header {
+  background-color: var(--header-bg);
+  padding: 1rem 0;
+  position: relative;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+header.sticky {
+  position: sticky;
+  top: 0;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo i {
+  font-size: 1.8rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+nav ul li a:hover,
+nav ul li a:focus {
+  color: var(--primary-color);
+  outline: none;
+}
+
+/* HERO SECTION */
+.hero-section {
+  position: relative;
+  background: linear-gradient(135deg, rgba(0,123,255,0.65) 0%, rgba(0,198,255,0.65) 100%),
+    url('images/workshop-tools-scene.jpg') center center/cover no-repeat;
+  color: white;
+  padding: 4rem 1rem;
+  text-align: center;
+  min-height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.5s;
+}
+
+body.dark-mode .hero-section {
+  background: linear-gradient(135deg, rgba(51,153,255,0.7) 0%, rgba(38,114,210,0.7) 100%),
+    url('images/workshop-tools-scene.jpg') center center/cover no-repeat;
+  color: #e0e0e0;
+}
+
+.hero-content h1 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn {
+  background-color: var(--btn-bg);
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: var(--btn-hover-bg);
+  outline: none;
+}
+
+/* Enhanced Button Styles */
+.btn, .view-map-btn, .dark-mode-toggle {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.dark-mode-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 2000;
+  background: var(--btn-bg);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  transition: background 0.3s, color 0.3s;
+}
+
+.dark-mode-toggle:hover,
+.dark-mode-toggle:focus {
+  background: var(--btn-hover-bg);
+  color: #fff;
+  outline: none;
+}
+
+/* DIY TUTORIALS SECTION */
+.tutorials-section {
+  padding: 3rem 1rem;
+}
+
+.tutorials-section h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+/* Accordion */
+.accordion {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.accordion-item {
+  border: 1px solid var(--accordion-border);
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  background-color: var(--accordion-bg);
+  overflow: hidden;
+}
+
+.accordion-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 1.1rem;
+  padding-right: 2rem;
+  position: relative;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  padding: 1rem 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--primary-color);
+  transition: background-color 0.3s;
+}
+
+.accordion-header::after {
+  content: '\f078';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  font-size: 1rem;
+  color: var(--primary-color);
+  transition: transform 0.3s;
+}
+
+.accordion-header:hover,
+.accordion-header:focus {
+  background-color: var(--btn-bg);
+  color: white;
+  outline: none;
+}
+
+.accordion-header.active::after {
+  transform: rotate(180deg);
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 1.5rem;
+  transition: max-height 0.3s ease;
+}
+
+.accordion-content ol {
+  padding: 1rem 0;
+  color: var(--text-color);
+}
+
+/* FIND A REPAIR CAFÉ SECTION */
+.repair-cafes-section {
+  padding: 3rem 1rem;
+}
+
+.repair-cafes-section h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+}
+
+#searchCafe {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto 1.5rem auto;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: 1px solid var(--input-border);
+  border-radius: 4px;
+  background-color: var(--input-bg);
+  color: var(--text-color);
+}
+
+.cafe-list {
+  list-style: none;
+  max-width: 700px;
+  margin: 0 auto 2rem auto;
+  padding: 0;
+}
+
+.cafe-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--accordion-bg);
+  border: 1px solid var(--accordion-border);
+  border-radius: 5px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.cafe-info {
+  max-width: 70%;
+  font-size: 1rem;
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+}
+
+.view-map-btn {
+  background-color: var(--btn-bg);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.view-map-btn:hover,
+.view-map-btn:focus {
+  background-color: var(--btn-hover-bg);
+  outline: none;
+}
+
+/* Map container */
+.map-container {
+  max-width: 700px;
+  margin: 0 auto 3rem auto;
+  height: 350px;
+  border: 1px solid var(--accordion-border);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* REPAIR WORKSHOP REQUEST FORM */
+.workshops-section {
+  padding: 3rem 1rem;
+}
+
+.workshops-section h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+form {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+label {
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"] {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: 1px solid var(--input-border);
+  border-radius: 4px;
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="date"]:focus {
+  border-color: var(--primary-color);
+  outline: none;
+}
+
+.form-message {
+  font-weight: 600;
+  color: var(--primary-color);
+  text-align: center;
+  min-height: 1.5rem;
+}
+
+/* IMPACT STATS SECTION */
+.impact-section {
+  padding: 3rem 1rem;
+  background-color: var(--accordion-bg);
+  text-align: center;
+}
+
+.impact-section h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.stats-grid {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.stat-item {
+  flex: 1 1 150px;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.stat-item p {
+  font-weight: 400;
+  color: var(--text-color);
+  margin-top: 0.5rem;
+  font-size: 1rem;
+}
+
+/* FOOTER */
+.footer {
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.footer-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li a {
+  color: var(--footer-text);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.footer-links li a:hover,
+.footer-links li a:focus {
+  color: var(--primary-color);
+  outline: none;
+}
+
+.social-icons a {
+  color: var(--footer-text);
+  font-size: 1.5rem;
+  margin-left: 1rem;
+  transition: color 0.3s;
+}
+
+.social-icons a:hover,
+.social-icons a:focus {
+  color: var(--primary-color);
+  outline: none;
+}
+
+/* Video grid styles */
+.video-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.video-item {
+  flex: 1 1 300px;
+  max-width: 350px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 1rem;
+  text-align: center;
+  color: #222; /* Light mode text */
+  transition: background 0.3s, color 0.3s;
+}
+
+.video-item p {
+  margin-top: 0.75rem;
+  font-weight: 600;
+  color: inherit;
+}
+
+/* Dark mode for video items */
+body.dark-mode .video-item {
+  background: #222;
+  color: #e0e0e0;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .container {
+    max-width: 95vw;
+    padding: 0 0.5rem;
+  }
+  .stats-grid {
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  nav ul {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
+  .stats-grid {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .accordion {
+    max-width: 100%;
+  }
+  .map-container {
+    height: 250px;
+  }
+  form {
+    max-width: 100%;
+    padding: 0 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  header, .footer, .hero-section, .tutorials-section, .repair-cafes-section, .workshops-section, .impact-section {
+    padding: 1rem 0.25rem;
+  }
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+  .hero-content p {
+    font-size: 1rem;
+  }
+  .accordion-header {
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+  }
+  .cafe-list li {
+    padding: 0.75rem 1rem;
+  }
+  .map-container {
+    height: 180px;
+  }
+  .footer-container {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+  .footer-links {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .social-icons a {
+    margin-left: 0.5rem;
+    font-size: 1.2rem;
+  }
+}
+
+/* Scroll animations */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Dark mode adjustments */
+body.dark-mode {  opacity: 1;
+
+}
+
+
+
+
+
+
+/*# sourceMappingURL=styles.css.map */

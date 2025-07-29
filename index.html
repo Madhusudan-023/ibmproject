@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FixIt Hub</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+  <!-- HEADER & NAVIGATION -->
+  <header id="header" class="sticky">
+    <div class="container nav-container">
+      <div class="logo">
+        <i class="fas fa-wrench"></i>
+        <span>FixIt Hub</span>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#tutorials">DIY Tutorials</a></li>
+          <li><a href="#repair-cafes">Repair Café Map</a></li>
+          <li><a href="#workshops">Workshops</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section id="hero" class="hero-section">
+    <div class="container hero-content">
+      <h1>Repair Before You Replace</h1>
+      <p>Connect with repair experts &amp; learn to fix your broken items instead of tossing them away.</p>
+      <button id="findRepairCafeBtn" class="btn">Find a Repair Café</button>
+    </div>
+  </section>
+
+  <!-- DIY TUTORIALS SECTION -->
+  <section id="tutorials" class="tutorials-section container">
+    <h2>DIY Tutorials</h2>
+    <div class="accordion">
+      <div class="accordion-item">
+        <button class="accordion-header">Electronics (e.g., Fixing a loose phone charger)</button>
+        <div class="accordion-content">
+          <ol>
+            <li>Unplug the charger and inspect the cable for damage.</li>
+            <li>Use electrical tape to secure any loose wires.</li>
+            <li>Test the charger with your device.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-header">Clothes (e.g., How to sew a button)</button>
+        <div class="accordion-content">
+          <ol>
+            <li>Thread a needle with matching thread.</li>
+            <li>Position the button on the fabric.</li>
+            <li>Sew through the holes several times to secure.</li>
+            <li>Tie off the thread and trim excess.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-header">Furniture (e.g., Tightening a wobbly chair)</button>
+        <div class="accordion-content">
+          <ol>
+            <li>Identify loose screws or joints.</li>
+            <li>Use a screwdriver or wrench to tighten screws.</li>
+            <li>Apply wood glue if joints are loose.</li>
+            <li>Allow glue to dry before use.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REPAIR INSPIRATION VIDEOS SECTION -->
+  <section id="videos" class="videos-section container">
+    <h2>Repair Inspiration Videos</h2>
+    <div class="video-grid">
+      <div class="video-item">
+        <iframe width="100%" height="220" src="https://www.youtube.com/embed/QxJjwk7DViI" title="Mobile Repair Tutorial" frameborder="0" allowfullscreen></iframe>
+        <p>Mobile Repair Tutorial</p>
+      </div>
+      <div class="video-item">
+        <iframe width="100%" height="220" src="https://www.youtube.com/embed/MmcEF2GR584" title="Laptop Motherboard Repair" frameborder="0" allowfullscreen></iframe>
+        <p>Laptop Motherboard Repair</p>
+      </div>
+      <div class="video-item">
+        <iframe width="100%" height="220" src="https://www.youtube.com/embed/dKqIVWTpIiA" title="Fan Repair Step by Step" frameborder="0" allowfullscreen></iframe>
+        <p>Fan Repair Step by Step</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FIND A REPAIR CAFÉ SECTION -->
+  <section id="repair-cafes" class="repair-cafes-section container">
+    <h2>Find a Repair Café</h2>
+    <input type="text" id="searchCafe" placeholder="Search by city name..." />
+    <ul id="cafeList" class="cafe-list">
+      <!-- India cafes -->
+      <li data-city="Mumbai">
+        <div class="cafe-info">
+          <strong>Mumbai Repair Hub</strong><br />
+          101 Marine Drive, Mumbai, MH
+        </div>
+        <button class="view-map-btn" data-lat="19.0760" data-lng="72.8777">View on Map</button>
+      </li>
+      <li data-city="Delhi">
+        <div class="cafe-info">
+          <strong>Delhi FixIt Café</strong><br />
+          202 Connaught Place, Delhi, DL
+        </div>
+        <button class="view-map-btn" data-lat="28.6139" data-lng="77.2090">View on Map</button>
+      </li>
+      <li data-city="Bangalore">
+        <div class="cafe-info">
+          <strong>Bangalore Repair Spot</strong><br />
+          303 MG Road, Bangalore, KA
+        </div>
+        <button class="view-map-btn" data-lat="12.9716" data-lng="77.5946">View on Map</button>
+      </li>
+    </ul>
+    <div id="mapContainer" class="map-container">
+      <iframe
+        id="mapFrame"
+        src="https://maps.google.com/maps?q=20.5937,78.9629&z=5&output=embed"
+        frameborder="0"
+        allowfullscreen
+        aria-label="Repair Café Map"
+      ></iframe>
+    </div>
+  </section>
+
+  <!-- REPAIR WORKSHOP REQUEST FORM -->
+  <section id="workshops" class="workshops-section container">
+    <h2>Repair Workshop Request Form</h2>
+    <form id="workshopForm" novalidate>
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="item">Item to Repair</label>
+      <input type="text" id="item" name="item" required />
+
+      <label for="date">Preferred Date</label>
+      <input type="date" id="date" name="date" required />
+
+      <button type="submit" class="btn">Submit</button>
+      <p id="formMessage" class="form-message" aria-live="polite"></p>
+    </form>
+  </section>
+
+  <!-- IMPACT STATS SECTION -->
+  <section id="impact" class="impact-section container">
+    <h2>Our Impact</h2>
+    <div class="stats-grid">
+      <div class="stat-item">
+        <span class="counter" data-target="3254">0</span>
+        <p>Items Saved from Landfills</p>
+      </div>
+      <div class="stat-item">
+        <span class="counter" data-target="120">0</span>
+        <p>Active Repair Cafés</p>
+      </div>
+      <div class="stat-item">
+        <span class="counter" data-target="350">0</span>
+        <p>Volunteers Joined</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contact" class="footer">
+    <div class="container footer-container">
+      <nav>
+        <ul class="footer-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#privacy">Privacy</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="social-icons">
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      </div>
+      <p>© 2024 FixIt Hub. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
